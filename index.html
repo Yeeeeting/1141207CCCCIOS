@@ -68,50 +68,68 @@
         .btn-press:active { transform: scale(0.98); }
 
         .spinner {
-            width: 24px; height: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            width: 32px; height: 32px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 0.8s ease-in-out infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Input Focus Ring Customization */
+        input:focus {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-0 sm:p-4 text-slate-800">
 
     <!-- Main Dashboard -->
-    <main id="app-root" class="w-full max-w-lg glass-panel sm:rounded-3xl h-[100dvh] sm:h-auto sm:max-h-[90vh] flex flex-col overflow-hidden shadow-2xl transition-all duration-300">
+    <main id="app-root" class="w-full max-w-xl glass-panel sm:rounded-3xl h-[100dvh] sm:h-auto sm:max-h-[95vh] flex flex-col overflow-hidden shadow-2xl transition-all duration-300">
         
         <!-- Header -->
-        <header class="bg-slate-900 text-white p-5 shrink-0 flex justify-between items-center z-20 shadow-md">
+        <header class="bg-slate-900 text-white p-6 shrink-0 flex justify-between items-start z-20 shadow-md">
             <div>
-                <h1 class="text-lg font-bold tracking-tight text-white leading-tight">臨床能力委員會(CCC)<br>實務工作坊</h1>
-                <p class="text-[10px] text-slate-400 mt-1 flex items-center"><i class="fa-solid fa-location-dot mr-1"></i> 奇美醫院 第五醫療大樓 5F</p>
+                <h1 class="text-2xl font-bold tracking-tight text-white leading-tight mb-2">臨床能力委員會(CCC)<br>實務工作坊</h1>
+                <p class="text-sm text-slate-400 flex items-center"><i class="fa-solid fa-location-dot mr-2"></i> 奇美醫院 第五醫療大樓 5F</p>
             </div>
-            <div class="text-right">
-                <div id="clockTime" class="font-mono text-xl font-bold tracking-tighter text-blue-400">--:--</div>
-                <div class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">DEC 07, 2025</div>
+            
+            <!-- Right Side: Action & Time -->
+            <div class="flex items-center gap-3">
+                <!-- Platform Button -->
+                <a href="https://yeeeeting.github.io/CMHCCCRPDSP/" target="_blank" class="hidden sm:flex bg-indigo-600 hover:bg-indigo-500 border border-indigo-500/50 text-white text-xs font-bold px-3 py-2 rounded-lg transition-all items-center shadow-lg group">
+                    <i class="fa-solid fa-laptop-code mr-2 group-hover:animate-pulse"></i> 演練平台
+                </a>
+                <!-- Mobile Icon Version -->
+                <a href="https://yeeeeting.github.io/CMHCCCRPDSP/" target="_blank" class="sm:hidden bg-indigo-600 hover:bg-indigo-500 border border-indigo-500/50 text-white p-2.5 rounded-lg transition-all shadow-lg flex items-center justify-center">
+                    <i class="fa-solid fa-laptop-code text-sm"></i>
+                </a>
+
+                <div class="text-right pl-2 border-l border-white/10">
+                    <div id="clockTime" class="font-mono text-2xl font-bold tracking-tighter text-blue-400">--:--</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-widest mt-1">DEC 07, 2025</div>
+                </div>
             </div>
         </header>
 
         <!-- Scrollable Content Area -->
         <div class="flex-grow overflow-y-auto no-scrollbar bg-slate-50 relative flex flex-col">
             
-            <!-- LAYER 1: Identity & Check-In (Dynamic) -->
-            <section id="identityLayer" class="p-4 bg-white shadow-sm border-b border-slate-100 z-10 transition-all">
+            <!-- LAYER 1: Identity & Check-In -->
+            <section id="identityLayer" class="p-5 bg-white shadow-sm border-b border-slate-100 z-10 transition-all">
                 
                 <!-- State A: Guest (Input Field) -->
                 <div id="guestView" class="animate-fade-in">
-                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100">
-                        <label for="quickIdInput" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
-                            <i class="fa-solid fa-user-tag mr-1"></i> 學員報到 Check-In
+                    <div class="bg-blue-50/50 rounded-2xl p-6 border border-blue-100">
+                        <label for="quickIdInput" class="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center">
+                            <i class="fa-solid fa-user-tag mr-2"></i> 學員報到 CHECK-IN
                         </label>
-                        <div class="flex gap-2">
+                        <div class="flex gap-3">
                             <input type="text" id="quickIdInput" 
-                                class="w-full text-xl font-mono font-bold tracking-widest border border-slate-300 rounded-xl px-4 py-3 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 focus:outline-none uppercase bg-white transition-all placeholder:text-slate-300 placeholder:text-base placeholder:font-sans" 
+                                class="w-full text-3xl font-mono font-bold tracking-widest border border-slate-300 rounded-xl px-4 py-4 focus:border-blue-600 focus:outline-none uppercase bg-white transition-all placeholder:text-slate-300 placeholder:text-xl placeholder:font-sans placeholder:tracking-normal" 
                                 placeholder="請輸入人事號" autocomplete="off">
-                            <button onclick="App.login()" class="bg-slate-900 text-white px-5 rounded-xl hover:bg-slate-800 btn-press shadow-lg flex items-center justify-center">
-                                <i class="fa-solid fa-arrow-right"></i>
+                            <button onclick="App.login()" class="bg-slate-900 text-white px-6 rounded-xl hover:bg-slate-800 btn-press shadow-lg flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-right text-2xl"></i>
                             </button>
                         </div>
                     </div>
@@ -119,238 +137,141 @@
 
                 <!-- State B: Logged In User (Profile & Action) -->
                 <div id="memberView" class="hidden animate-slide-down">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center text-lg font-bold shadow-md" id="userAvatar">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-slate-900 text-white flex items-center justify-center text-2xl font-bold shadow-md" id="userAvatar">
                                 --
                             </div>
                             <div>
-                                <h2 class="text-xl font-bold text-slate-900 leading-none" id="userName">--</h2>
-                                <p class="text-xs text-slate-500 mt-1" id="userUnit">--</p>
+                                <h2 class="text-2xl font-bold text-slate-900 leading-none mb-1" id="userName">--</h2>
+                                <p class="text-sm text-slate-500 font-medium" id="userUnit">--</p>
                             </div>
                         </div>
-                        <button onclick="App.logout()" class="text-xs text-slate-400 border border-slate-200 px-2 py-1 rounded hover:bg-slate-50 hover:text-red-500 transition-colors">
+                        <button onclick="App.logout()" class="text-sm font-bold text-slate-400 border border-slate-200 px-4 py-2 rounded-lg hover:bg-slate-50 hover:text-red-500 transition-colors">
                             重置
                         </button>
                     </div>
 
                     <!-- Dynamic Action Button -->
                     <div id="actionContainer">
-                        <!-- Check In Button -->
-                        <button id="btnCheckIn" onclick="App.handleAction('checkin')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 rounded-xl shadow-lg shadow-emerald-500/20 btn-press flex items-center justify-center gap-2 font-bold text-lg hidden">
-                            <i class="fa-solid fa-qrcode"></i> 確認出席 (Check In)
+                        <button id="btnCheckIn" onclick="App.handleAction('checkin')" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-6 rounded-2xl shadow-xl shadow-emerald-500/20 btn-press flex items-center justify-center gap-3 font-bold text-2xl hidden">
+                            <i class="fa-solid fa-qrcode text-3xl"></i> 確認出席 (CHECK IN)
                         </button>
 
-                        <!-- Status Banner -->
-                        <div id="bannerStatus" class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex items-center gap-3 hidden">
-                            <i class="fa-solid fa-circle-check text-emerald-500 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-emerald-800 text-sm">已完成報到</div>
-                                <div class="text-[10px] text-emerald-600" id="statusTime">--</div>
+                        <div id="bannerStatus" class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 flex items-center gap-4 hidden shadow-sm">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-2xl"></i>
                             </div>
-                            <button onclick="App.handleAction('checkout')" class="ml-auto text-xs text-slate-400 underline decoration-dotted">簽退</button>
+                            <div class="flex-grow">
+                                <div class="font-bold text-emerald-900 text-lg">已完成報到</div>
+                                <div class="text-sm text-emerald-600 font-medium mt-1" id="statusTime">--</div>
+                            </div>
+                            <button onclick="App.handleAction('checkout')" class="text-sm text-slate-400 font-bold px-3 py-2 border border-slate-200 rounded-lg hover:bg-white hover:text-red-500 transition-colors">簽退</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- LAYER 2: Resource Grid (Always Visible) -->
-            <section class="p-4 grid grid-cols-2 gap-3 flex-grow content-start bg-slate-50/50">
+            <!-- LAYER 2: Resource Grid -->
+            <section class="p-5 grid grid-cols-2 gap-4 flex-grow content-start bg-slate-50/50">
                 
-                <!-- 1. Group Info (Smart Card) -->
-                <div onclick="App.handleGroupClick()" class="col-span-2 sm:col-span-2 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all cursor-pointer btn-press group relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fa-solid fa-people-group text-6xl text-indigo-900"></i>
+                <!-- 1. Group Info -->
+                <div onclick="App.handleGroupClick()" class="col-span-2 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all cursor-pointer btn-press group relative overflow-hidden min-h-[160px] flex flex-col justify-center">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-people-group text-8xl text-indigo-900"></i>
                     </div>
-                    <div class="relative z-10 flex flex-col h-full justify-between">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-lg flex items-center justify-center">
-                                <i class="fa-solid fa-users-viewfinder"></i>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-users-viewfinder text-xl"></i>
                             </div>
-                            <span class="text-xs font-bold text-indigo-500 uppercase tracking-wider">Group Info</span>
+                            <span class="text-sm font-bold text-indigo-500 uppercase tracking-wider">Group Info</span>
                         </div>
                         
-                        <!-- Content changes based on login state -->
-                        <h3 class="text-xl font-bold text-slate-800" id="cardGroupTitle">演練分組名單 & 場地</h3>
-                        <p class="text-sm text-slate-500 mt-1" id="cardGroupDesc">輸入人事號以查看您的專屬分組</p>
+                        <h3 class="text-2xl font-bold text-slate-800 leading-tight" id="cardGroupTitle">演練分組名單 & 場地</h3>
+                        <p class="text-base text-slate-500 mt-2" id="cardGroupDesc">點擊查看完整分組表與地點</p>
                     </div>
                 </div>
 
                 <!-- 2. Agenda -->
-                <button onclick="App.ui.openModal('agendaModal')" class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all btn-press text-left h-32 flex flex-col justify-between group">
-                    <div class="bg-orange-50 text-orange-500 w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fa-regular fa-clock text-lg"></i>
+                <button onclick="App.ui.openModal('agendaModal')" class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all btn-press text-left h-48 flex flex-col justify-between group">
+                    <div class="bg-orange-50 text-orange-500 w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-regular fa-clock text-2xl"></i>
                     </div>
                     <div>
-                        <span class="block font-bold text-slate-800 text-lg">今日議程</span>
-                        <span class="text-xs text-slate-400">Timeline</span>
+                        <span class="block font-bold text-slate-800 text-xl mb-1">今日議程</span>
+                        <span class="text-sm text-slate-400 font-medium">Timeline</span>
                     </div>
                 </button>
 
-                <!-- 3. Pre-Survey (Placeholder) -->
-                <div onclick="App.ui.showToast('前測問卷連結尚未開放', 'warning')" class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all btn-press text-left h-32 flex flex-col justify-between group cursor-pointer">
-                    <div class="bg-blue-50 text-blue-500 w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-clipboard-question text-lg"></i>
+                <!-- 3. Pre-Survey -->
+                <a href="https://via-lin8.github.io/ccc_workshop/" target="_blank" class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all btn-press text-left h-48 flex flex-col justify-between group cursor-pointer block">
+                    <div class="bg-blue-50 text-blue-500 w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid fa-clipboard-question text-2xl"></i>
                     </div>
                     <div>
-                        <span class="block font-bold text-slate-800 text-lg">前測問卷</span>
-                        <span class="text-xs text-slate-400">Pending</span>
+                        <span class="block font-bold text-slate-800 text-xl mb-1">前測問卷</span>
+                        <span class="text-sm text-slate-400 font-medium flex items-center">
+                            Pre-Survey <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                        </span>
                     </div>
-                </div>
+                </a>
 
-                <!-- 4. Post-Survey / Satisfaction (Placeholder) -->
-                <div onclick="App.ui.showToast('滿意度調查連結尚未開放', 'warning')" class="col-span-2 bg-gradient-to-r from-pink-50 to-rose-50 p-4 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition-all btn-press flex items-center justify-between group cursor-pointer">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-white text-pink-500 w-10 h-10 rounded-full flex items-center justify-center shadow-sm">
-                            <i class="fa-solid fa-star text-lg"></i>
+                <!-- 4. Post-Survey -->
+                <a href="https://via-lin8.github.io/ccc_workshop/posttest.html" target="_blank" class="col-span-2 bg-gradient-to-r from-pink-50 to-rose-50 p-6 rounded-3xl border border-pink-100 shadow-sm hover:shadow-md transition-all btn-press flex items-center justify-between group cursor-pointer min-h-[100px] block">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-white text-pink-500 w-12 h-12 rounded-full flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-star text-xl"></i>
                         </div>
                         <div>
-                            <span class="block font-bold text-pink-900">滿意度調查 & 後測</span>
-                            <span class="text-xs text-pink-700 opacity-70">活動結束後填寫</span>
+                            <span class="block font-bold text-pink-900 text-lg">滿意度調查 & 後測</span>
+                            <span class="text-sm text-pink-700 font-medium opacity-80 flex items-center">
+                                活動結束後填寫 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                            </span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-pink-300 group-hover:translate-x-1 transition-transform"></i>
-                </div>
+                    <div class="bg-white/50 w-10 h-10 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right text-pink-400 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
 
             </section>
             
-            <footer class="p-4 text-center opacity-30 mt-auto">
-                <p class="text-[10px] font-mono">SECURE CONNECTION ESTABLISHED</p>
+            <footer class="p-6 text-center opacity-30 mt-auto">
+                <p class="text-xs font-mono font-bold tracking-widest">SECURE CONNECTION ESTABLISHED</p>
             </footer>
         </div>
     </main>
 
-    <!-- Agenda Modal (Updated with PDF Content) -->
+    <!-- Agenda Modal -->
     <div id="agendaModal" class="fixed inset-0 z-50 hidden">
         <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="App.ui.closeModal('agendaModal')"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4">
-                <div class="relative rounded-2xl bg-white w-full max-w-md shadow-2xl overflow-hidden animate-slide-up">
-                    <div class="bg-slate-900 text-white p-4 flex justify-between items-center sticky top-0 z-10">
+                <div class="relative rounded-3xl bg-white w-full max-w-lg shadow-2xl overflow-hidden animate-slide-up">
+                    <div class="bg-slate-900 text-white p-6 flex justify-between items-center sticky top-0 z-10 shadow-lg">
                         <div>
-                            <h3 class="font-bold text-lg">活動議程表</h3>
-                            <p class="text-xs text-slate-400">講師：臺大醫院教學部 楊志偉副主任</p>
+                            <h3 class="font-bold text-2xl">活動議程表</h3>
+                            <p class="text-sm text-slate-400 mt-1">講師：臺大醫院教學部 楊志偉副主任</p>
                         </div>
-                        <button onclick="App.ui.closeModal('agendaModal')"><i class="fa-solid fa-times text-xl"></i></button>
+                        <button onclick="App.ui.closeModal('agendaModal')" class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fa-solid fa-times text-xl"></i></button>
                     </div>
-                    <div class="p-6 max-h-[60vh] overflow-y-auto">
-                        <ol class="relative border-l border-slate-200 ml-2">                  
-                            <!-- 8:45 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-orange-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-clipboard-check text-orange-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">08:45 - 09:00</time>
-                                <h3 class="font-bold text-slate-900">報到</h3>
-                            </li>
-                            
-                            <!-- 9:00 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-microphone text-slate-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">09:00 - 09:10</time>
-                                <h3 class="font-bold text-slate-900">長官致詞</h3>
-                            </li>
-
-                            <!-- 9:10 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-chalkboard-user text-indigo-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">09:10 - 10:00</time>
-                                <h3 class="font-bold text-indigo-900">Lecture: CCC核心概念與運作</h3>
-                            </li>
-
-                            <!-- 10:00 Break -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-mug-hot text-gray-400 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">10:00 - 10:10</time>
-                                <h3 class="font-bold text-slate-500">休息 Break</h3>
-                            </li>
-
-                            <!-- 10:10 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-users-gear text-emerald-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">10:10 - 11:10</time>
-                                <h3 class="font-bold text-emerald-900">CCC信賴評定演練</h3>
-                            </li>
-
-                            <!-- 11:10 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-comments text-slate-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">11:10 - 11:50</time>
-                                <h3 class="font-bold text-slate-900">結果分享與討論交流</h3>
-                            </li>
-
-                            <!-- 11:50 Lunch -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-yellow-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-utensils text-yellow-600 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">11:50 - 13:00</time>
-                                <h3 class="font-bold text-slate-900">午餐 Lunch Time</h3>
-                            </li>
-
-                            <!-- 13:00 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-chalkboard-user text-indigo-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">13:00 - 13:20</time>
-                                <h3 class="font-bold text-indigo-900">Lecture: 補強計畫說明</h3>
-                            </li>
-
-                            <!-- 13:20 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-pen-to-square text-emerald-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">13:20 - 14:00</time>
-                                <h3 class="font-bold text-emerald-900">補強計畫設計演練</h3>
-                            </li>
-
-                            <!-- 14:00 Break -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-mug-hot text-gray-400 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">14:00 - 14:10</time>
-                                <h3 class="font-bold text-slate-500">休息 Break</h3>
-                            </li>
-
-                            <!-- 14:10 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-chalkboard-user text-indigo-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">14:10 - 14:40</time>
-                                <h3 class="font-bold text-indigo-900">Lecture: 結構性回饋技巧介紹</h3>
-                            </li>
-
-                            <!-- 14:40 -->
-                            <li class="mb-6 ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-people-arrows text-emerald-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">14:40 - 15:30</time>
-                                <h3 class="font-bold text-emerald-900">結構性回饋技巧演練</h3>
-                            </li>
-
-                            <!-- 15:30 -->
-                            <li class="ml-6">
-                                <span class="absolute flex items-center justify-center w-6 h-6 bg-slate-100 rounded-full -left-3 ring-4 ring-white">
-                                    <i class="fa-solid fa-flag-checkered text-slate-500 text-xs"></i>
-                                </span>
-                                <time class="block mb-1 text-sm font-mono text-slate-400">15:30 - 16:00</time>
-                                <h3 class="font-bold text-slate-900">共識與綜合討論</h3>
-                            </li>
+                    <div class="p-8 max-h-[65vh] overflow-y-auto">
+                        <ol class="relative border-l-2 border-slate-200 ml-3 space-y-8">                  
+                            <!-- Agenda Items -->
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-orange-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-clipboard-check text-orange-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">08:45 - 09:00</time><h3 class="font-bold text-xl text-slate-900">報到</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-slate-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-microphone text-slate-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">09:00 - 09:10</time><h3 class="font-bold text-xl text-slate-900">長官致詞</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-chalkboard-user text-indigo-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">09:10 - 10:00</time><h3 class="font-bold text-xl text-indigo-900">Lecture: CCC核心概念與運作</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-mug-hot text-gray-400 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">10:00 - 10:10</time><h3 class="font-bold text-xl text-slate-500">休息 Break</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-emerald-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-users-gear text-emerald-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">10:10 - 11:10</time><h3 class="font-bold text-xl text-emerald-900">CCC信賴評定演練</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-slate-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-comments text-slate-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">11:10 - 11:50</time><h3 class="font-bold text-xl text-slate-900">結果分享與討論交流</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-yellow-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-utensils text-yellow-600 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">11:50 - 13:00</time><h3 class="font-bold text-xl text-slate-900">午餐 Lunch Time</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-chalkboard-user text-indigo-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">13:00 - 13:20</time><h3 class="font-bold text-xl text-indigo-900">Lecture: 補強計畫說明</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-emerald-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-pen-to-square text-emerald-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">13:20 - 14:00</time><h3 class="font-bold text-xl text-emerald-900">補強計畫設計演練</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-mug-hot text-gray-400 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">14:00 - 14:10</time><h3 class="font-bold text-xl text-slate-500">休息 Break</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-chalkboard-user text-indigo-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">14:10 - 14:40</time><h3 class="font-bold text-xl text-indigo-900">Lecture: 結構性回饋技巧介紹</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-emerald-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-people-arrows text-emerald-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">14:40 - 15:30</time><h3 class="font-bold text-xl text-emerald-900">結構性回饋技巧演練</h3></li>
+                            <li class="ml-8"><span class="absolute flex items-center justify-center w-8 h-8 bg-slate-100 rounded-full -left-4 ring-8 ring-white"><i class="fa-solid fa-flag-checkered text-slate-500 text-sm"></i></span><time class="block mb-2 text-sm font-bold font-mono text-slate-400 tracking-wide">15:30 - 16:00</time><h3 class="font-bold text-xl text-slate-900">共識與綜合討論</h3></li>
                         </ol>
                     </div>
                 </div>
@@ -363,30 +284,57 @@
         <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="App.ui.closeModal('groupModal')"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4">
-                <div class="relative rounded-2xl bg-white w-full max-w-sm shadow-2xl overflow-hidden animate-slide-up">
-                    <div class="h-24 bg-gradient-to-r from-indigo-600 to-purple-600 relative">
-                        <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-full p-1 shadow-lg">
-                            <div class="w-full h-full bg-slate-100 rounded-full flex items-center justify-center text-slate-500 font-bold text-xl" id="modalAvatar">?</div>
+                <div class="relative rounded-3xl bg-white w-full max-w-lg shadow-2xl overflow-hidden animate-slide-up">
+                    <div class="h-28 bg-gradient-to-r from-indigo-600 to-purple-600 relative shrink-0">
+                        <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white rounded-full p-1 shadow-lg">
+                            <div class="w-full h-full bg-slate-100 rounded-full flex items-center justify-center text-slate-500 font-bold text-2xl" id="modalAvatar">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="pt-10 pb-6 px-6 text-center">
-                        <h3 class="text-xl font-bold text-slate-900" id="detailName">--</h3>
-                        <p class="text-sm text-slate-500" id="detailRole">--</p>
-                        <div class="mt-6 grid grid-cols-2 gap-2">
-                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <span class="block text-[10px] text-slate-400 uppercase font-bold">Group</span>
-                                <span class="block text-2xl font-black text-indigo-600" id="detailGroup">--</span>
+                    
+                    <div class="pt-12 pb-8 px-6 text-center">
+                        <!-- Dynamic Content Container -->
+                        <div id="modalContentUser" class="hidden">
+                            <h3 class="text-3xl font-bold text-slate-900 mb-1" id="detailName">--</h3>
+                            <p class="text-base text-slate-500 font-medium" id="detailRole">--</p>
+                            
+                            <div class="mt-8 grid grid-cols-2 gap-3">
+                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <span class="block text-xs text-slate-400 uppercase font-bold tracking-widest mb-1">Group</span>
+                                    <span class="block text-3xl font-black text-indigo-600" id="detailGroup">--</span>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <span class="block text-xs text-slate-400 uppercase font-bold tracking-widest mb-1">Location</span>
+                                    <span class="block text-lg font-bold text-slate-700 mt-1 leading-tight" id="detailLocation">--</span>
+                                </div>
                             </div>
-                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <span class="block text-[10px] text-slate-400 uppercase font-bold">Location</span>
-                                <span class="block text-base font-bold text-slate-700 mt-1" id="detailLocation">--</span>
+                            
+                            <div class="mt-6 text-left space-y-3 text-base text-slate-600 border-t border-slate-100 pt-6">
+                                 <div class="flex justify-between items-center">
+                                     <span class="text-slate-400 font-medium">單位 Unit</span>
+                                     <span class="font-bold text-slate-800" id="detailUnit">--</span>
+                                 </div>
+                                 <div class="flex justify-between items-center">
+                                     <span class="text-slate-400 font-medium">職類 Category</span>
+                                     <span class="font-bold text-slate-800" id="detailCat">--</span>
+                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 text-left space-y-2 text-sm text-slate-600 border-t border-slate-100 pt-4">
-                             <div class="flex justify-between"><span>單位</span><span class="font-medium" id="detailUnit">--</span></div>
-                             <div class="flex justify-between"><span>職類</span><span class="font-medium" id="detailCat">--</span></div>
+
+                        <!-- Public Content for Guests (Updated: Full Member List) -->
+                        <div id="modalContentPublic" class="hidden text-left">
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-slate-900">演練分組總表</h3>
+                                <p class="text-slate-500 text-sm">請依名單前往指定地點進行演練</p>
+                            </div>
+                            
+                            <div id="publicGroupList" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                                <!-- Groups will be injected here via JS -->
+                            </div>
                         </div>
-                        <button onclick="App.ui.closeModal('groupModal')" class="mt-6 w-full py-3 rounded-xl border border-slate-200 font-bold text-slate-600 hover:bg-slate-50">關閉</button>
+                        
+                        <button onclick="App.ui.closeModal('groupModal')" class="mt-6 w-full py-4 rounded-xl border-2 border-slate-100 font-bold text-lg text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors">關閉 Close</button>
                     </div>
                 </div>
             </div>
@@ -394,21 +342,108 @@
     </div>
 
     <!-- Toast & Loader -->
-    <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-full max-w-sm px-4 pointer-events-none flex flex-col gap-2"></div>
+    <div id="toast-container" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] w-full max-w-sm px-4 pointer-events-none flex flex-col gap-3"></div>
     <div id="loadingOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex-col items-center justify-center text-white">
-        <div class="spinner mb-4"></div>
-        <p class="font-medium tracking-wide text-sm opacity-90 font-mono">PROCESSING...</p>
+        <div class="spinner mb-6"></div>
+        <p class="font-medium tracking-widest text-lg opacity-90 font-mono">PROCESSING...</p>
     </div>
 
     <script>
         const Config = {
             API_URL: "https://script.google.com/macros/s/AKfycbxPSfMoJbkH6VuVXY4-ABsA1zBB5B5BUAlU-TaYQEHe1xtYKE5X2ZV6NGORvSrWhm-Y/exec",
             STORAGE_KEY: "ccc_workshop_v3",
+            // Consolidated MOCK_DATA extracted from 1141207 分組名單.pdf (Corrected Sequence)
             MOCK_DATA: {
-                "12345": { name: "陳醫師", unit: "急診醫學部", title: "主治醫師", category: "醫師", group: "A組", location: "會議室 1", status: "none" },
-                "ADMIN": { name: "測試管理員", unit: "教學中心", title: "專員", category: "行政", group: "本部", location: "報到台", status: "checkedIn", checkInTime: "12:30" }
+                // Group 1 (7 people)
+                "880146": { name: "黃淑芬", unit: "藥劑部", title: "組長", category: "藥事", group: "Group 1", location: "國際會議廳" },
+                "A10206": { name: "蕭時玲", unit: "放射腫瘤部", title: "醫事放射師", category: "醫事放射", group: "Group 1", location: "國際會議廳" },
+                "860609": { name: "吳世釧", unit: "電腦斷層磁振造影組", title: "組長", category: "醫事放射", group: "Group 1", location: "國際會議廳" },
+                "A21036": { name: "林家榛", unit: "臨床病理部", title: "醫事檢驗師", category: "醫事檢驗", group: "Group 1", location: "國際會議廳" },
+                "B30916": { name: "陳家豪", unit: "藥劑部", title: "藥師", category: "藥事", group: "Group 1", location: "國際會議廳" },
+                "940698": { name: "林信伶", unit: "藥劑部", title: "藥師", category: "藥事", group: "Group 1", location: "國際會議廳" },
+                "A70823": { name: "陳力瑀", unit: "耳鼻喉部", title: "備任主治醫師", category: "西醫", group: "Group 1", location: "國際會議廳" },
+                
+                // Group 2 (8 people)
+                "A60504": { name: "邱旅揚", unit: "護理部", title: "教學護理師", category: "護理", group: "Group 2", location: "554會議室" },
+                "890938": { name: "江惠英", unit: "護理部", title: "副部長", category: "護理", group: "Group 2", location: "554會議室" },
+                "840782": { name: "徐富美", unit: "4A加護病房", title: "護理長", category: "護理", group: "Group 2", location: "554會議室" },
+                "841048": { name: "陶菁", unit: "8C病房", title: "副護理長", category: "護理", group: "Group 2", location: "554會議室" },
+                "970847": { name: "魏妙芬", unit: "急診室", title: "副護理長", category: "護理", group: "Group 2", location: "554會議室" },
+                "980636": { name: "邱怡菁", unit: "3B加護病房", title: "副護理長", category: "護理", group: "Group 2", location: "554會議室" },
+                "850890": { name: "郭惠婷", unit: "門診", title: "護理長", category: "護理", group: "Group 2", location: "554會議室" },
+                "9207A3": { name: "吳佩珊", unit: "護理部", title: "副護理長", category: "護理", group: "Group 2", location: "554會議室" },
+
+                // Group 3 (8 people)
+                "830864": { name: "林琪馨", unit: "護理部", title: "督導", category: "護理", group: "Group 3", location: "556會議室" },
+                "930240": { name: "鄭君婷", unit: "5B病房", title: "護理長", category: "護理", group: "Group 3", location: "556會議室" },
+                "9306P2": { name: "謝雅玲", unit: "8B病房", title: "護理長", category: "護理", group: "Group 3", location: "556會議室" },
+                "971204": { name: "謝佳效", unit: "3B加護病房", title: "副護理長", category: "護理", group: "Group 3", location: "556會議室" },
+                "9408N1": { name: "謝淑娟", unit: "12A病房", title: "副護理長", category: "護理", group: "Group 3", location: "556會議室" },
+                "860404": { name: "蔡素蕊", unit: "門診", title: "小組長", category: "護理", group: "Group 3", location: "556會議室" },
+                "910727": { name: "蘇敬惠", unit: "呼吸照護中心", title: "護理長", category: "護理", group: "Group 3", location: "556會議室" },
+                "830782": { name: "郭麗玲", unit: "4A加護病房", title: "高階護理師", category: "護理", group: "Group 3", location: "556會議室" },
+
+                // Group 4 (7 people)
+                "880419": { name: "劉美媛", unit: "營養科", title: "主任", category: "營養", group: "Group 4", location: "國際會議廳" },
+                "930952": { name: "楊晴嵐", unit: "耳鼻喉部", title: "聽力師", category: "聽力", group: "Group 4", location: "國際會議廳" },
+                "901152": { name: "梁懿珊", unit: "呼吸治療科", title: "組長", category: "呼吸治療", group: "Group 4", location: "國際會議廳" },
+                "990933": { name: "高佳瑜", unit: "呼吸治療科", title: "副組長", category: "呼吸治療", group: "Group 4", location: "國際會議廳" },
+                "790108": { name: "鄭愛琴", unit: "呼吸治療科", title: "副組長", category: "呼吸治療", group: "Group 4", location: "國際會議廳" },
+                "A40935": { name: "羅蓓怡", unit: "呼吸治療科", title: "小組長", category: "呼吸治療", group: "Group 4", location: "國際會議廳" },
+                "B00804": { name: "朱彰堯", unit: "解剖病理科", title: "主治醫師", category: "西醫", group: "Group 4", location: "國際會議廳" },
+
+                // Group 5 (8 people)
+                "860926": { name: "劉天慧", unit: "復健部", title: "組長", category: "物理治療", group: "Group 5", location: "國際會議廳" },
+                "9306DG": { name: "陳璟綺", unit: "復健部物治組", title: "組長", category: "物理治療", group: "Group 5", location: "國際會議廳" },
+                "B00945": { name: "蔡宜庭", unit: "精神醫學部", title: "語言治療師", category: "語言治療", group: "Group 5", location: "國際會議廳" },
+                "9001P1": { name: "楊仁豪", unit: "耳鼻喉部", title: "小組長", category: "聽力", group: "Group 5", location: "國際會議廳" },
+                "A407N8": { name: "簡佑安", unit: "職業醫學科", title: "臨床心理師", category: "臨床心理", group: "Group 5", location: "國際會議廳" },
+                "B20612": { name: "王俞鈞", unit: "職業醫學科", title: "臨床心理師", category: "臨床心理", group: "Group 5", location: "國際會議廳" },
+                "A31015": { name: "郭婉吟", unit: "職業醫學科", title: "臨床心理師", category: "臨床心理", group: "Group 5", location: "國際會議廳" },
+                "A00805": { name: "蔡長志", unit: "臨床技能中心", title: "主任", category: "西醫", group: "Group 5", location: "國際會議廳" },
+
+                // Group 6 (8 people)
+                "900825": { name: "林威廷", unit: "骨科部", title: "主任", category: "西醫", group: "Group 6", location: "558會議室" },
+                "A00951": { name: "王瑜婷", unit: "中醫部", title: "代理部長", category: "中醫", group: "Group 6", location: "558會議室" },
+                "A608Q1": { name: "蘇偉翔", unit: "耳鼻喉部", title: "主治醫師", category: "西醫", group: "Group 6", location: "558會議室" },
+                "A60833": { name: "陳伯榕", unit: "急診醫學部", title: "主治醫師", category: "西醫", group: "Group 6", location: "558會議室" },
+                "900505": { name: "陳志偉", unit: "神經外科", title: "主任", category: "西醫", group: "Group 6", location: "558會議室" },
+                "8807P3": { name: "林健禾", unit: "精神醫學部", title: "部長", category: "西醫", group: "Group 6", location: "558會議室" },
+                "A30885": { name: "温仁育", unit: "婦產部", title: "主治醫師", category: "西醫", group: "Group 6", location: "558會議室" },
+                "A70501": { name: "李國彰", unit: "急診醫學部", title: "主治醫師", category: "西醫", group: "Group 6", location: "558會議室" },
+
+                // Group 7 (8 people)
+                "940963": { name: "郭妍伶", unit: "一般科", title: "主任", category: "西醫", group: "Group 7", location: "552會議室" },
+                "870712": { name: "陳冠良", unit: "牙科部", title: "主任", category: "牙醫", group: "Group 7", location: "552會議室" },
+                "A40801": { name: "謝賜吉", unit: "放射診斷科", title: "主任", category: "西醫", group: "Group 7", location: "552會議室" },
+                "A70848": { name: "黃筱倫", unit: "兒科部", title: "主治醫師", category: "西醫", group: "Group 7", location: "552會議室" },
+                "A30847": { name: "洪意茵", unit: "麻醉部", title: "主治醫師", category: "西醫", group: "Group 7", location: "552會議室" },
+                "840807": { name: "黃建元", unit: "家庭醫學部", title: "主治醫師", category: "西醫", group: "Group 7", location: "552會議室" },
+                "900708": { name: "王嘉地", unit: "急診醫學部", title: "主任", category: "西醫", group: "Group 7", location: "552會議室" },
+                "991025": { name: "劉璟鋒", unit: "耳鼻喉部", title: "主任", category: "西醫", group: "Group 7", location: "552會議室" },
+
+                // Group 8 (7 people)
+                "A20858": { name: "何聖佑", unit: "放射腫瘤部", title: "部長", category: "西醫", group: "Group 8", location: "552會議室" },
+                "A10827": { name: "林才揚", unit: "泌尿外科", title: "主治醫師", category: "西醫", group: "Group 8", location: "552會議室" },
+                "A20401": { name: "林耀聰", unit: "麻醉部", title: "主治醫師", category: "西醫", group: "Group 8", location: "552會議室" },
+                "A60302": { name: "洪國全", unit: "麻醉部", title: "主治醫師", category: "西醫", group: "Group 8", location: "552會議室" },
+                "860808": { name: "王鈺霖", unit: "復健部", title: "部長", category: "西醫", group: "Group 8", location: "552會議室" },
+                "B20915": { name: "陳俊嘉", unit: "整形外科", title: "主任", category: "西醫", group: "Group 8", location: "552會議室" },
+                "A70846": { name: "沈至軒", unit: "耳鼻喉部", title: "備任主治醫師", category: "西醫", group: "Group 8", location: "552會議室" }
             }
         };
+
+        // Static Public Group Data for Guest View (Matched 100% with MOCK_DATA)
+        const PUBLIC_GROUPS = [
+            { id: "Group 1", loc: "國際會議廳", members: ["黃淑芬", "蕭時玲", "吳世釧", "林家榛", "陳家豪", "林信伶", "陳力瑀"] },
+            { id: "Group 2", loc: "554 會議室", members: ["邱旅揚", "江惠英", "徐富美", "陶菁", "魏妙芬", "邱怡菁", "郭惠婷", "吳佩珊"] },
+            { id: "Group 3", loc: "556 會議室", members: ["林琪馨", "鄭君婷", "謝雅玲", "謝佳效", "謝淑娟", "蔡素蕊", "蘇敬惠", "郭麗玲"] },
+            { id: "Group 4", loc: "國際會議廳", members: ["劉美媛", "楊晴嵐", "梁懿珊", "高佳瑜", "鄭愛琴", "羅蓓怡", "朱彰堯"] },
+            { id: "Group 5", loc: "國際會議廳", members: ["劉天慧", "陳璟綺", "蔡宜庭", "楊仁豪", "簡佑安", "王俞鈞", "郭婉吟", "蔡長志"] },
+            { id: "Group 6", loc: "558 會議室", members: ["林威廷", "王瑜婷", "蘇偉翔", "陳伯榕", "陳志偉", "林健禾", "温仁育", "李國彰"] },
+            { id: "Group 7", loc: "552 會議室", members: ["郭妍伶", "陳冠良", "謝賜吉", "黃筱倫", "洪意茵", "黃建元", "王嘉地", "劉璟鋒"] },
+            { id: "Group 8", loc: "552 會議室", members: ["何聖佑", "林才揚", "林耀聰", "洪國全", "王鈺霖", "陳俊嘉", "沈至軒"] }
+        ];
 
         const App = {
             state: { user: null, isDemoMode: false },
@@ -416,12 +451,10 @@
             init() {
                 this.time.start();
                 this.auth.loadSession();
-                // If guest, focus input
                 if(!this.state.user) {
                     const input = document.getElementById('quickIdInput');
                     if(input) input.focus();
                 }
-                // Enter key binding
                 document.getElementById('quickIdInput')?.addEventListener('keydown', (e) => {
                     if(e.key === 'Enter') App.login();
                 });
@@ -464,21 +497,21 @@
                 App.ui.toggleLoading(true);
 
                 try {
-                    const result = await App.network.post('login', { employeeId: empId });
-                    if (result.success) {
-                        App.auth.saveSession({ id: empId, ...result.data });
-                        App.ui.showToast("登入成功", "success");
+                    if (Config.MOCK_DATA[empId]) {
+                        await new Promise(r => setTimeout(r, 400));
+                        App.auth.saveSession({ id: empId, ...Config.MOCK_DATA[empId] });
+                        App.ui.showToast("登入成功 (Local)", "success");
                     } else {
-                        throw new Error(result.message || "查無資料");
+                        const result = await App.network.post('login', { employeeId: empId });
+                        if (result.success) {
+                            App.auth.saveSession({ id: empId, ...result.data });
+                            App.ui.showToast("登入成功 (Cloud)", "success");
+                        } else {
+                            throw new Error(result.message || "查無資料");
+                        }
                     }
                 } catch (error) {
-                    if (Config.MOCK_DATA[empId]) {
-                        App.state.isDemoMode = true;
-                        App.auth.saveSession({ id: empId, ...Config.MOCK_DATA[empId] });
-                        App.ui.showToast("模擬模式啟用", "warning");
-                    } else {
-                        App.ui.showToast("登入失敗: " + error.message, "error");
-                    }
+                    App.ui.showToast("登入失敗: " + error.message, "error");
                 } finally {
                     App.ui.toggleLoading(false);
                     input.value = '';
@@ -495,9 +528,9 @@
                 App.ui.toggleLoading(true);
                 try {
                     let response;
-                    if (App.state.isDemoMode) {
-                        await new Promise(r => setTimeout(r, 600));
-                        response = { success: true, data: { status: type === 'checkin' ? 'checkedIn' : 'checkedOut', checkInTime: new Date().toLocaleTimeString('zh-TW', {hour:'2-digit', minute:'2-digit'}) } };
+                    if (Config.MOCK_DATA[App.state.user.id]) {
+                         try { await App.network.post(type, { employeeId: App.state.user.id }); } catch(e) {}
+                         response = { success: true, data: { status: type === 'checkin' ? 'checkedIn' : 'checkedOut', checkInTime: new Date().toLocaleTimeString('zh-TW', {hour:'2-digit', minute:'2-digit'}) } };
                     } else {
                         response = await App.network.post(type, { employeeId: App.state.user.id });
                     }
@@ -512,26 +545,42 @@
             },
 
             handleGroupClick() {
+                const modalUser = document.getElementById('modalContentUser');
+                const modalPublic = document.getElementById('modalContentPublic');
+                const avatar = document.getElementById('modalAvatar');
+
                 if (App.state.user) {
-                    // Populate and show modal
                     const u = App.state.user;
-                    document.getElementById('modalAvatar').innerText = u.name ? u.name[0] : "?";
+                    avatar.innerHTML = u.name ? u.name[0] : "?";
                     document.getElementById('detailName').innerText = u.name;
                     document.getElementById('detailRole').innerText = `${u.title} / ${u.id}`;
                     document.getElementById('detailGroup').innerText = u.group || "未分配";
                     document.getElementById('detailLocation').innerText = u.location || "洽詢櫃台";
                     document.getElementById('detailUnit').innerText = u.unit;
                     document.getElementById('detailCat').innerText = u.category;
-                    App.ui.openModal('groupModal');
+                    
+                    modalUser.classList.remove('hidden');
+                    modalPublic.classList.add('hidden');
                 } else {
-                    // Not logged in: Focus input and show hint
-                    document.getElementById('quickIdInput').focus();
-                    App.ui.showToast("請先輸入人事號以查看您的分組", "info");
-                    // Highlight input area visually
-                    const inputArea = document.getElementById('guestView');
-                    inputArea.classList.add('ring-2', 'ring-indigo-300', 'rounded-2xl');
-                    setTimeout(() => inputArea.classList.remove('ring-2', 'ring-indigo-300', 'rounded-2xl'), 1000);
+                    avatar.innerHTML = '<i class="fa-solid fa-users"></i>';
+                    modalUser.classList.add('hidden');
+                    modalPublic.classList.remove('hidden');
+                    
+                    const listContainer = document.getElementById('publicGroupList');
+                    listContainer.innerHTML = PUBLIC_GROUPS.map(g => `
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-indigo-700 text-lg">${g.id}</span>
+                                <span class="text-xs bg-white border border-slate-200 px-2 py-1 rounded text-slate-500 font-bold"><i class="fa-solid fa-location-dot mr-1"></i>${g.loc}</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                ${g.members.map(m => `<span class="text-sm bg-white text-slate-600 px-2 py-1 rounded border border-slate-200">${m}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('');
                 }
+                
+                App.ui.openModal('groupModal');
             },
 
             network: {
@@ -551,8 +600,6 @@
                 renderState(isLoggedIn) {
                     const guestView = document.getElementById('guestView');
                     const memberView = document.getElementById('memberView');
-                    
-                    // Card Content
                     const cardTitle = document.getElementById('cardGroupTitle');
                     const cardDesc = document.getElementById('cardGroupDesc');
 
@@ -560,18 +607,15 @@
                         guestView.classList.add('hidden');
                         memberView.classList.remove('hidden');
                         
-                        // Populate Member Header
                         const u = App.state.user;
                         document.getElementById('userName').innerText = u.name;
                         document.getElementById('userUnit').innerText = u.unit;
                         document.getElementById('userAvatar').innerText = u.name ? u.name[0] : "?";
 
-                        // Update Group Card to be Personalized
                         cardTitle.innerText = `${u.group || "未分配"} | ${u.location || "--"}`;
                         cardDesc.innerText = "點擊查看詳細資訊";
                         cardDesc.classList.add('text-indigo-600', 'font-bold');
 
-                        // Render Actions
                         const btnCheckIn = document.getElementById('btnCheckIn');
                         const banner = document.getElementById('bannerStatus');
                         
@@ -588,9 +632,8 @@
                         guestView.classList.remove('hidden');
                         memberView.classList.add('hidden');
                         
-                        // Reset Group Card
                         cardTitle.innerText = "演練分組名單 & 場地";
-                        cardDesc.innerText = "輸入人事號以查看您的專屬分組";
+                        cardDesc.innerText = "點擊查看分組表與場地資訊";
                         cardDesc.classList.remove('text-indigo-600', 'font-bold');
                     }
                 },
@@ -601,8 +644,8 @@
                     const container = document.getElementById('toast-container');
                     const toast = document.createElement('div');
                     let bg = type === 'success' ? 'bg-emerald-600' : type === 'error' ? 'bg-red-600' : 'bg-slate-800';
-                    toast.className = `${bg} text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 transform transition-all duration-300 translate-y-10 opacity-0 pointer-events-auto`;
-                    toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> <span class="font-bold text-sm">${msg}</span>`;
+                    toast.className = `${bg} text-white px-6 py-4 rounded-2xl shadow-xl flex items-center gap-4 transform transition-all duration-300 translate-y-10 opacity-0 pointer-events-auto border border-white/10`;
+                    toast.innerHTML = `<i class="fa-solid fa-circle-info text-xl"></i> <span class="font-bold text-lg">${msg}</span>`;
                     container.appendChild(toast);
                     requestAnimationFrame(() => toast.classList.remove('translate-y-10', 'opacity-0'));
                     setTimeout(() => { toast.classList.add('opacity-0', 'translate-y-2'); setTimeout(() => toast.remove(), 300); }, 2500);
